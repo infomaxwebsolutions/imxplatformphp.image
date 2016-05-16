@@ -1,0 +1,37 @@
+{
+  "name": "codenamephp/imxplatformphp.image",
+  "type": "library",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "Bastian Schwarz",
+      "email": "bastian@codename-php.de"
+    }
+  ],
+  "require": {
+    "php": ">=7",
+    "codenamephp/platform.core": "^1",
+    "codenamephp/platform.di": "^1"
+  },
+  "require-dev": {
+    "codenamephp/platform.test": "^1",
+    "phing/phing": "2.9.*",
+    "phploc/phploc": "2.0.*",
+    "pdepend/pdepend": "1.0.7",
+    "phpmd/phpmd": "1.4.*",
+    "sebastian/phpcpd": "2.0.*",
+    "phpdocumentor/phpdocumentor": "2.8.*"
+  },
+  "autoload": {
+    "classmap": ["src/main/php"]
+  },
+  "autoload-dev": {
+    "psr-0": {
+      "de\\codenamephp\\": ["src/main/php", "src/test/php"],
+      "": "vendor/pdepend/pdepend/src/main/php"
+    }
+  },
+  "archive": {
+    "exclude": ["/src/test"]
+  }
+}
