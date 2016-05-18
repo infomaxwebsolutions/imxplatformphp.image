@@ -1,6 +1,6 @@
 node {
   stage 'Init'
-  step([$class: 'GitHubSetCommitStatusBuilder'])
+  step([$class: 'GitHubCommitStatusSetter'])
 
   stage 'Checkout'
   checkout scm
@@ -35,7 +35,7 @@ node {
   publishHTML(target:[allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/api', reportFiles: 'index.html', reportName: 'API Documentation'])
   publishHTML(target:[allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/coverage/html', reportFiles: 'index.html', reportName: 'Test Coverage'])
   step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'bastian@codename-php.de', sendToIndividuals: true])
-  step([$class: 'GitHubCommitNotifier', resultOnFailure: 'FAILURE'])
+  step([$class: 'GitHubCommitStatusSetter'])
 }
 
 def ant(args) {
