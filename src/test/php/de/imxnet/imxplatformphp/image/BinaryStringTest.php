@@ -55,6 +55,10 @@ class BinaryStringTest extends \de\codenamephp\platform\test\TestCase {
     $this->sut->fromString('some string');
   }
 
+  public function testfromString_canSetMimeType() {
+    self::assertEquals('image/png', $this->sut->fromString(base64_decode($this->getBlankImage()))->getMimeType());
+  }
+
   private function getBlankImage() {
     return 'iVBORw0KGgoAAAANSUhEUgAAABwAAAASCAMAAAB/2U7WAAAABl'
         . 'BMVEUAAAD///+l2Z/dAAAASUlEQVR4XqWQUQoAIAxC2/0vXZDr'
