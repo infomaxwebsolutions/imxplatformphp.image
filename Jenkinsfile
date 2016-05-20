@@ -33,7 +33,7 @@ node {
   step([$class: 'CloverPublisher', cloverReportDir: 'build/logs', cloverReportFileName: 'clover.xml'])
   publishHTML(target:[allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/api', reportFiles: 'index.html', reportName: 'API Documentation'])
   publishHTML(target:[allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'build/coverage/html', reportFiles: 'index.html', reportName: 'Test Coverage'])
-  step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'bastian@codename-php.de', sendToIndividuals: true])
+  step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: 'support@infomax-it.de', sendToIndividuals: true])
 }
 
 def ant(args) {
