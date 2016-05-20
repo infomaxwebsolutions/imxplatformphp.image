@@ -30,32 +30,26 @@ namespace de\imxnet\imxplatformphp\image;
 class Box {
 
   /**
-   * The top left coordinate of the box
+   * The top left coordinate (x/y) of the box
    *
    * @var Point
    */
   private $topLeftCorner = null;
 
   /**
-   * Sets an empty Point for topLeftCorner
+   * The dimensions (width/height) of the box
+   *
+   * @var Dimensions
+   */
+  private $dimensions = null;
+
+  /**
+   * Sets an empty Point for topLeftCorner and empty dimensions
    */
   public function __construct() {
     $this->setTopLeftCorner(new Point());
+    $this->setDimensions(new Dimensions());
   }
-
-  /**
-   * The width of the box
-   *
-   * @var int
-   */
-  private $width = 0;
-
-  /**
-   * The height of the box
-   *
-   * @var int
-   */
-  private $height = 0;
 
   /**
    *
@@ -63,6 +57,24 @@ class Box {
    */
   public function getTopLeftCorner() {
     return $this->topLeftCorner;
+  }
+
+  /**
+   *
+   * @return Dimensions
+   */
+  public function getDimensions() {
+    return $this->dimensions;
+  }
+
+  /**
+   *
+   * @param \de\imxnet\imxplatformphp\image\Dimensions $dimensions
+   * @return self
+   */
+  public function setDimensions(Dimensions $dimensions) {
+    $this->dimensions = $dimensions;
+    return $this;
   }
 
   /**
@@ -76,38 +88,6 @@ class Box {
   }
 
   /**
-   *
-   * @return int
-   */
-  public function getWidth() {
-    return $this->width;
-  }
-
-  /**
-   *
-   * @param int $width
-   * @return self
-   */
-  public function setWidth($width) {
-    $this->width = (int) $width;
-    return $this;
-  }
-
-  public function getHeight() {
-    return $this->height;
-  }
-
-  /**
-   *
-   * @param int $height
-   * @return self
-   */
-  public function setHeight($height) {
-    $this->height = (int) $height;
-    return $this;
-  }
-
-  /**
    * Gets the top right corner by creating a new point with current x + width as x and the current y as y
    *
    * The reference is not kept so manipulating values doesn't affect the box
@@ -115,7 +95,7 @@ class Box {
    * @return \de\imxnet\imxplatformphp\image\Point
    */
   public function getTopRightCorner() {
-    return new Point($this->getTopLeftCorner()->getX() + $this->getWidth(), $this->getTopLeftCorner()->getY());
+    return new Point($this->getTopLeftCorner()->getX() + $this->getDimensions()->getWidth(), $this->getTopLeftCorner()->getY());
   }
 
   /**
@@ -126,7 +106,7 @@ class Box {
    * @return \de\imxnet\imxplatformphp\image\Point
    */
   public function getBottomRightCorner() {
-    return new Point($this->getTopLeftCorner()->getX() + $this->getWidth(), $this->getTopLeftCorner()->getY() + $this->getHeight());
+    return new Point($this->getTopLeftCorner()->getX() + $this->getDimensions()->getWidth(), $this->getTopLeftCorner()->getY() + $this->getDimensions()->getHeight());
   }
 
   /**
@@ -137,6 +117,6 @@ class Box {
    * @return \de\imxnet\imxplatformphp\image\Point
    */
   public function getBottomLeftCorner() {
-    return new Point($this->getTopLeftCorner()->getX(), $this->getTopLeftCorner()->getY() + $this->getHeight());
+    return new Point($this->getTopLeftCorner()->getX(), $this->getTopLeftCorner()->getY() + $this->getDimensions()->getHeight());
   }
 }

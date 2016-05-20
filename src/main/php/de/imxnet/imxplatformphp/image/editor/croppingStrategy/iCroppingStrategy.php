@@ -18,12 +18,14 @@
 /**
  * @namespace
  */
-namespace asdf;
+namespace de\imxnet\imxplatformphp\image\editor\croppingStrategy;
 
 /**
+ * Interface for cropping strategy that calculates the box that will be cropped from a source image.
  *
  * @author Bastian Schwarz <bastian@codename-php.de>
  */
 interface iCroppingStrategy {
-//put your code here
+
+  public function getBox();
 }

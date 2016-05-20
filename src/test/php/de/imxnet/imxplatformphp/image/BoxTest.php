@@ -19,19 +19,22 @@ class BoxTest extends \de\codenamephp\platform\test\TestCase {
   }
 
   public function testgetTopRightCorner() {
-    $this->sut->setWidth(400)->getTopLeftCorner()->setX(100)->setY(100);
+    $this->sut->getDimensions()->setWidth(400);
+    $this->sut->getTopLeftCorner()->setX(100)->setY(100);
 
     self::assertEquals(new Point(500, 100), $this->sut->getTopRightCorner());
   }
 
   public function testgetBottomRightCorner() {
-    $this->sut->setWidth(400)->setHeight(200)->getTopLeftCorner()->setX(100)->setY(100);
+    $this->sut->getDimensions()->setWidth(400)->setHeight(200);
+    $this->sut->getTopLeftCorner()->setX(100)->setY(100);
 
     self::assertEquals(new Point(500, 300), $this->sut->getBottomRightCorner());
   }
 
   public function testgetBottomLeftCorner() {
-    $this->sut->setHeight(200)->getTopLeftCorner()->setX(100)->setY(100);
+    $this->sut->getDimensions()->setHeight(200);
+    $this->sut->getTopLeftCorner()->setX(100)->setY(100);
 
     self::assertEquals(new Point(100, 300), $this->sut->getBottomLeftCorner());
   }
