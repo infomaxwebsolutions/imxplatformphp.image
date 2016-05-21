@@ -20,6 +20,10 @@
  */
 namespace de\imxnet\imxplatformphp\image\editor\croppingStrategy;
 
+use \de\imxnet\imxplatformphp\image\Box;
+use \de\imxnet\imxplatformphp\image\Dimensions;
+use \de\imxnet\imxplatformphp\image\Point;
+
 /**
  * Interface for cropping strategy that calculates the box that will be cropped from a source image.
  *
@@ -27,5 +31,14 @@ namespace de\imxnet\imxplatformphp\image\editor\croppingStrategy;
  */
 interface iCroppingStrategy {
 
-  public function getBox();
+  /**
+   * Calculates the box that can be used to crop an image while zooming/maintaining a maximum of the orignal image while achieving the desired dimensions. Also, a Box can be passed
+   * either to preset the cropping position or to pass the previous results of a cropping strategy in order to chain multiple strategies together
+   *
+   * @param Dimensions $desiredDimensions The desired width and height of the box
+   * @param Dimensions $orignalDimensions The original dimension which will constrain the box, e.g. the dimensions of the source image
+   * @param Point $focalPoint The focal point around which the box should be aligned (doesn't always have to be the center, but most likely is the desired center)
+   * @param Box $initialBox An optional preset box, e.g. the result of a previous strategy
+   */
+  public function getBox(Dimensions $desiredDimensions, Dimensions $orignalDimensions, Point $focalPoint, Box $initialBox = null);
 }
