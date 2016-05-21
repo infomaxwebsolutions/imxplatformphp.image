@@ -39,6 +39,7 @@ interface iCroppingStrategy {
    * @param Dimensions $orignalDimensions The original dimension which will constrain the box, e.g. the dimensions of the source image
    * @param Point $focalPoint The focal point around which the box should be aligned (doesn't always have to be the center, but most likely is the desired center)
    * @param Box $initialBox An optional preset box, e.g. the result of a previous strategy
+   * @return Box
    */
   public function getBox(Dimensions $desiredDimensions, Dimensions $orignalDimensions, Point $focalPoint, Box $initialBox = null);
 }

@@ -54,7 +54,7 @@ class AlignOnFcoalPoint implements \de\imxnet\imxplatformphp\image\editor\croppi
    * @param Dimensions $originalDimensions
    * @param Point $focalPoint
    * @param Box $initialBox
-   * @return type
+   * @return Box
    */
   public function getBox(Dimensions $desiredDimensions, Dimensions $originalDimensions, Point $focalPoint, Box $initialBox = null) {
     $box = $this->setupBox($desiredDimensions, $initialBox);

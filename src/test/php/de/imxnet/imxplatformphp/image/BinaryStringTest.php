@@ -59,6 +59,14 @@ class BinaryStringTest extends \de\codenamephp\platform\test\TestCase {
     self::assertEquals('image/png', $this->sut->fromString(base64_decode($this->getBlankImage()))->getMimeType());
   }
 
+  public function testgetWidth() {
+    self::assertEquals(28, $this->sut->getWidth());
+  }
+
+  public function testgetHeight() {
+    self::assertEquals(18, $this->sut->getHeight());
+  }
+
   private function getBlankImage() {
     return 'iVBORw0KGgoAAAANSUhEUgAAABwAAAASCAMAAAB/2U7WAAAABl'
         . 'BMVEUAAAD///+l2Z/dAAAASUlEQVR4XqWQUQoAIAxC2/0vXZDr'
