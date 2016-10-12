@@ -11,7 +11,7 @@
   "require": {
     "php": ">=5.6",
     "ext-gd": "*",
-    "infomax/imxplatformphp.core": "dev-master"
+    "infomax/imxplatformphp.core": "^1"
   },
   "require-dev": {
     "codenamephp/platform.test": "^1",
